@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'features/offer_page/page/OfferPage.dart';
+import 'features/offer_page/page_main/OfferPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
