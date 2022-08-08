@@ -1,16 +1,8 @@
 # carmel_bakeryy
 
-A new Flutter project.
+This is an application for Carmel Bakery (Coffe, Cake & More) customers.
+In this app you can check the current prices and collect customer poitns.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+We want to add more features in the future.
+I wish you all delicious
+Mateusz Sołtys.
