@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../models/OfferWidgetModel.dart';
+import '../../../models/widgets/OfferWidgetModel.dart';
 
 class OfferPageDrinks extends StatelessWidget {
   @override
