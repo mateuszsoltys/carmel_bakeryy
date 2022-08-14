@@ -1,4 +1,7 @@
+import 'package:carmel_bakeryy/models/widgets/AnimatedAvailableProduct.dart';
 import 'package:flutter/material.dart';
+
+import 'AnimatedUnavailableProduct.dart';
 
 class OfferWidgetModel extends StatelessWidget {
   const OfferWidgetModel({
@@ -26,7 +29,9 @@ class OfferWidgetModel extends StatelessWidget {
           ),
           Text('nazwa'),
           Spacer(),
-          Text('cena')
+          Text('cena'),
+          //AnimatedAvailableProduct(),
+          AnimatedUnavailableProduct()
         ],
       ),
     );
