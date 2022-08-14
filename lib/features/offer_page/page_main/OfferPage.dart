@@ -1,5 +1,6 @@
 import 'package:carmel_bakeryy/features/offer_page/page_cake/OfferPageCakes.dart';
 import 'package:carmel_bakeryy/features/offer_page/page_drinks/OfferPageDrinks.dart';
+import 'package:carmel_bakeryy/features/offer_page/page_other/OfferPageOther.dart';
 import 'package:flutter/material.dart';
 
 class OfferPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class MyPageViewCollecstion extends StatelessWidget {
     final PageController controller = PageController();
     return PageView(
       controller: controller,
-      children: [OfferPageCakes(), OfferPageDrinks()],
+      children: [OfferPageCakes(), OfferPageDrinks(), OfferPageOther()],
     );
   }
 }
