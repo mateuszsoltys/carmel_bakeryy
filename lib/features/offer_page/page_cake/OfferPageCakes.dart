@@ -7,37 +7,25 @@ class OfferPageCakes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: AnimatedArrowLeft(),
+        leading: const SizedBox(
+          height: 30,
+          width: 50,
+        ),
         title: const Center(
-          child: Text('Ciasta'),
+          child: Text('CIASTA'),
         ),
         actions: [
           Column(
             children: [
               AnimatedArrowRight(),
-              const Text("Napoje"),
+              const Text("NAPOJE"),
             ],
           )
         ],
       ),
       backgroundColor: const Color.fromARGB(255, 12, 145, 168),
       body: ListView(
-        children: const [
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-          OfferWidgetModel(),
-        ],
+        children: const [Text('dane z Firebase')],
       ),
     );
   }

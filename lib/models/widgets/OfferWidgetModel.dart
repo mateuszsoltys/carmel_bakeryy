@@ -1,12 +1,13 @@
-import 'package:carmel_bakeryy/models/widgets/AnimatedAvailableProduct.dart';
+import 'package:carmel_bakeryy/models/data/OfferDataModel.dart';
 import 'package:flutter/material.dart';
-
+import 'AnimatedAvailableProduct.dart';
 import 'AnimatedUnavailableProduct.dart';
 
 class OfferWidgetModel extends StatelessWidget {
-  const OfferWidgetModel({
-    Key? key,
-  }) : super(key: key);
+  const OfferWidgetModel({Key? key, required this.offerDataModel})
+      : super(key: key);
+
+  final OfferDataModel offerDataModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,18 +21,18 @@ class OfferWidgetModel extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5),
             child: CircleAvatar(
               radius: 30.0,
-              backgroundImage: NetworkImage(
-                  'https://firebasestorage.googleapis.com/v0/b/carmel-bakery-customerapp.appspot.com/o/image1.jpeg?alt=media&token=89d74a9d-b38a-4b20-b606-61f8d5182c56'),
+              backgroundImage: NetworkImage(offerDataModel.Av_URL),
             ),
           ),
           SizedBox(
             width: 20,
           ),
-          Text('nazwa'),
+          Text(offerDataModel.Name),
           Spacer(),
-          Text('cena'),
-          //AnimatedAvailableProduct(),
-          AnimatedUnavailableProduct()
+          Text(offerDataModel.Price),
+          offerDataModel.Availability == true
+              ? AnimatedAvailableProduct()
+              : AnimatedUnavailableProduct(),
         ],
       ),
     );

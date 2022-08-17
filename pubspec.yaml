@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.20.0
   rive: ^0.9.1
+  cloud_firestore: ^3.4.4
+  flutter_bloc: ^8.1.1
   
 
 dev_dependencies:
