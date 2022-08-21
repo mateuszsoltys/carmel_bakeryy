@@ -33,3 +33,21 @@ class AnimatedArrowLeft extends StatelessWidget {
     );
   }
 }
+
+class AnimatedArrowDown extends StatelessWidget {
+  const AnimatedArrowDown({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RotatedBox(
+      quarterTurns: 1,
+      child: Container(
+          height: 30,
+          width: 50,
+          child: const RiveAnimation.asset(
+              'assets/animations/anim_arrow_right.riv')),
+    );
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:carmel_bakeryy/models/data/OfferDataModel.dart';
+import 'package:carmel_bakeryy/models/data/OfferDetailsDataModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OtherRemoteDataSource {
@@ -12,8 +13,20 @@ class OtherRemoteDataSource {
             Av_URL: doc['Av_URL'],
             Availability: doc['Availability'],
             Name: doc['Name'],
-            Price: doc['Price']);
+            Price: doc['Price'],
+            id: doc.id);
       }).toList();
     });
+  }
+
+  Future<OfferDetailsDataModel> getDetails({required String id}) async {
+    final details =
+        await FirebaseFirestore.instance.collection('others').doc(id).get();
+    return OfferDetailsDataModel(
+        Av_URL: details['Av_URL'],
+        Availability: details['Availability'],
+        Description: details['Description'],
+        Ingredients: details['Ingredients'],
+        Name: details['Name']);
   }
 }

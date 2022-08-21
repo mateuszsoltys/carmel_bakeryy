@@ -1,4 +1,5 @@
 import 'package:carmel_bakeryy/data/remote_data_sources/other_remote_data_source.dart';
+import 'package:carmel_bakeryy/features/details_page/other_details_page/other_details_page.dart';
 import 'package:carmel_bakeryy/features/offer_page/page_other/cubit/page_other_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,13 @@ class OfferPageOther extends StatelessWidget {
             body: ListView(
               children: [
                 for (final otherData in otherDatas)
-                  OfferWidgetModel(offerDataModel: otherData)
+                  InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>
+                                OtherDetailsPage(id: otherData.id)));
+                      },
+                      child: OfferWidgetModel(offerDataModel: otherData))
               ],
             ),
           );
