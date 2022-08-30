@@ -1,6 +1,5 @@
-import 'package:carmel_bakeryy/features/details_page/other_details_page/other_details_page.dart';
+import 'package:carmel_bakeryy/features/home_page/home_page.dart';
 import 'package:flutter/material.dart';
-import 'features/offer_page/page_main/OfferPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -22,8 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: OtherDetailsPage(),
-      home: OfferPage(),
+      home: HomePage(),
     );
   }
 }
