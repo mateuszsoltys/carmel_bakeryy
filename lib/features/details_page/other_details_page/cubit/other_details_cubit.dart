@@ -15,4 +15,12 @@ class OtherDetailsCubit extends Cubit<OtherDetailsState> {
     final details = await _otherRemoteDataSource.getDetails(id: id);
     emit(OtherDetailsState(detailsState: details));
   }
+
+  Future<void> switchBoolAvailabilityWithRefresh(
+      String id, bool avability) async {
+    await _otherRemoteDataSource.updateAvailability(
+        id: id, avability: !avability);
+    final details = await _otherRemoteDataSource.getDetails(id: id);
+    emit(OtherDetailsState(detailsState: details));
+  }
 }

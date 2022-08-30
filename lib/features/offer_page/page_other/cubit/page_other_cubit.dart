@@ -9,7 +9,7 @@ part 'page_other_state.dart';
 
 class PageOtherCubit extends Cubit<PageOtherState> {
   PageOtherCubit(this._otherRemoteDataSource)
-      : super(PageOtherState(dataOther: []));
+      : super(PageOtherState(dataOther: null));
 
   final OtherRemoteDataSource _otherRemoteDataSource;
   StreamSubscription? _streamSubscription;

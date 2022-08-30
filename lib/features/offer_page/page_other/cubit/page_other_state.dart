@@ -4,5 +4,5 @@ part of 'page_other_cubit.dart';
 class PageOtherState {
   PageOtherState({required this.dataOther});
 
-  final List<OfferDataModel> dataOther;
+  final List<OfferDataModel>? dataOther;
 }

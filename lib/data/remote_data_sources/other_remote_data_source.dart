@@ -29,4 +29,13 @@ class OtherRemoteDataSource {
         Ingredients: details['Ingredients'],
         Name: details['Name']);
   }
+
+  // Future do zmiany stanu avalibility
+  Future<void> updateAvailability(
+      {required String id, required bool avability}) async {
+    await FirebaseFirestore.instance
+        .collection('others')
+        .doc(id)
+        .update({'Availability': avability});
+  }
 }
