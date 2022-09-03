@@ -1,3 +1,4 @@
+import 'package:carmel_bakeryy/features/auth_page/auth_page.dart';
 import 'package:carmel_bakeryy/features/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: AuthGate(),
     );
   }
 }
