@@ -14,6 +14,13 @@ class AuthGate extends StatelessWidget {
         // User is not signed in
         if (!snapshot.hasData) {
           return SignInScreen(
+            headerBuilder: (context, constraints, _) {
+              return const Image(
+                image: AssetImage('assets/images/carmelbak_log.jpeg'),
+                height: 176,
+                width: 193,
+              );
+            },
             providerConfigs: [
               EmailProviderConfiguration(),
             ],
