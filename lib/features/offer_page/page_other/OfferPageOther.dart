@@ -37,7 +37,6 @@ class OfferPageOther extends StatelessWidget {
                 )
               ],
             ),
-            backgroundColor: Color.fromARGB(255, 12, 145, 168),
             body: ListView(
               children: [
                 for (final otherData in otherDatas)

@@ -1,3 +1,4 @@
+import 'package:carmel_bakeryy/app/theme/global_theme.dart';
 import 'package:carmel_bakeryy/features/auth_page/auth_page.dart';
 import 'package:carmel_bakeryy/features/home_page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Carmel Bakery',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: GlobalTheme(),
       home: AuthGate(),
     );
   }

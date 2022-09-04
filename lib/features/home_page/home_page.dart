@@ -20,14 +20,33 @@ class HomePage extends StatelessWidget {
           return Scaffold(
             body: screens[currentIndex],
             bottomNavigationBar: BottomNavyBar(
+              backgroundColor: Colors.brown,
               items: [
                 BottomNavyBarItem(
-                    icon: Icon(Icons.list_alt_outlined), title: Text('MENU')),
+                    activeColor: Colors.red,
+                    icon: Icon(
+                      Icons.list_alt_outlined,
+                      color: Color.fromARGB(255, 238, 186, 109),
+                    ),
+                    title: Text(
+                      'MENU',
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 238, 186, 109)),
+                    )),
                 BottomNavyBarItem(
-                    icon: Icon(Icons.qr_code_scanner),
-                    title: Text('PIECZĄTKI')),
+                    activeColor: Colors.red,
+                    icon: Icon(Icons.qr_code_scanner,
+                        color: Color.fromARGB(255, 238, 186, 109)),
+                    title: Text('PIECZĄTKI',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 238, 186, 109)))),
                 BottomNavyBarItem(
-                    icon: Icon(Icons.person), title: Text('PROFIL')),
+                    activeColor: Colors.red,
+                    icon: Icon(Icons.person,
+                        color: Color.fromARGB(255, 238, 186, 109)),
+                    title: Text('PROFIL',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 238, 186, 109)))),
               ],
               selectedIndex: currentIndex,
               onItemSelected: context.read<HomePageCubit>().getActualIndex,

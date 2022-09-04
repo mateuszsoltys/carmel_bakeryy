@@ -23,7 +23,6 @@ class OfferPageCakes extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: const Color.fromARGB(255, 12, 145, 168),
       body: ListView(
         children: const [Text('dane z Firebase')],
       ),
