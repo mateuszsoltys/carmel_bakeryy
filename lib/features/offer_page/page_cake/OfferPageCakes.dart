@@ -1,5 +1,7 @@
+import 'package:carmel_bakeryy/models/widgets/PlaceStatusIndicator.dart';
 import 'package:flutter/material.dart';
 import '../../../models/widgets/AnimatedArrowWidget.dart';
+import '../../../models/widgets/AnimatedGreenLight.dart';
 import '../../../models/widgets/OfferWidgetModel.dart';
 
 class OfferPageCakes extends StatelessWidget {
@@ -7,10 +9,7 @@ class OfferPageCakes extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const SizedBox(
-          height: 30,
-          width: 50,
-        ),
+        leading: PlaceStatusIndicator(),
         title: const Center(
           child: Text('CIASTA'),
         ),

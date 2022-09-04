@@ -9,8 +9,8 @@ class AnimatedGreenLight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 50,
-        width: 30,
+        height: 20,
+        width: 20,
         child: const RiveAnimation.asset('assets/animations/green_light.riv'));
   }
 }
