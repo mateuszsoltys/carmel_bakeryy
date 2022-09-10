@@ -1,15 +1,20 @@
+import 'package:carmel_bakeryy/app/cubit/root_cubit.dart';
 import 'package:carmel_bakeryy/models/widgets/PlaceStatusIndicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../models/widgets/AnimatedArrowWidget.dart';
-import '../../../models/widgets/AnimatedGreenLight.dart';
-import '../../../models/widgets/OfferWidgetModel.dart';
 
 class OfferPageCakes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bool? indicator = context.read<RootCubit>().state.open;
     return Scaffold(
       appBar: AppBar(
-        leading: PlaceStatusIndicator(),
+        leading: indicator == null
+            ? Container(
+                height: 50, width: 50, child: CircularProgressIndicator())
+            : PlaceStatusIndicator(indicator: indicator),
         title: const Center(
           child: Text('CIASTA'),
         ),
@@ -23,7 +28,13 @@ class OfferPageCakes extends StatelessWidget {
         ],
       ),
       body: ListView(
-        children: const [Text('dane z Firebase')],
+        children: [
+          Text('dane z Firebase'),
+          indicator == null
+              ? Container(
+                  height: 50, width: 50, child: CircularProgressIndicator())
+              : PlaceStatusIndicator(indicator: indicator)
+        ],
       ),
     );
   }
