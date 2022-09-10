@@ -8,34 +8,34 @@ import '../../../models/widgets/AnimatedArrowWidget.dart';
 class OfferPageCakes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final bool? indicator = context.read<RootCubit>().state.open;
-    return Scaffold(
-      appBar: AppBar(
-        leading: indicator == null
-            ? Container(
-                height: 50, width: 50, child: CircularProgressIndicator())
-            : PlaceStatusIndicator(indicator: indicator),
-        title: const Center(
-          child: Text('CIASTA'),
-        ),
-        actions: [
-          Column(
-            children: [
-              AnimatedArrowRight(),
-              const Text("NAPOJE"),
+    return BlocBuilder<RootCubit, RootState>(
+      builder: (context, state) {
+        bool? indicator = state.open;
+        return Scaffold(
+          appBar: AppBar(
+            leading: indicator == null
+                ? Container(
+                    height: 50, width: 50, child: CircularProgressIndicator())
+                : PlaceStatusIndicator(indicator: indicator),
+            title: const Center(
+              child: Text('CIASTA'),
+            ),
+            actions: [
+              Column(
+                children: [
+                  AnimatedArrowRight(),
+                  const Text("NAPOJE"),
+                ],
+              )
             ],
-          )
-        ],
-      ),
-      body: ListView(
-        children: [
-          Text('dane z Firebase'),
-          indicator == null
-              ? Container(
-                  height: 50, width: 50, child: CircularProgressIndicator())
-              : PlaceStatusIndicator(indicator: indicator)
-        ],
-      ),
+          ),
+          body: ListView(
+            children: [
+              Text('dane z Firebase'),
+            ],
+          ),
+        );
+      },
     );
   }
 }
