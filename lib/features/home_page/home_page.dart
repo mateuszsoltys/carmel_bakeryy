@@ -23,11 +23,11 @@ class HomePage extends StatelessWidget {
         BlocProvider(create: (context) => HomePageCubit())
       ],
       child: BlocBuilder<HomePageCubit, HomePageState>(
-        builder: (context, state) {
-          int currentIndex = state.currentIndex;
+        builder: (context, home) {
+          int currentIndex = home.currentIndex;
           final screens = [OfferPage(), CollectPage(), ProfilePage()];
           return BlocBuilder<RootCubit, RootState>(
-            builder: (context, state) {
+            builder: (context, root) {
               return Scaffold(
                 body: screens[currentIndex],
                 bottomNavigationBar: BottomNavyBar(

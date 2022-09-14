@@ -27,4 +27,11 @@ class GlobalRemoteDataSource {
         .get();
     return model.copyWith(admin1: admin['admin1'], admin2: admin['admin2']);
   }
+
+  Future<void> updateIndicator({required bool indicator}) async {
+    await FirebaseFirestore.instance
+        .collection('global')
+        .doc('states')
+        .update({'indicator': indicator});
+  }
 }

@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          RootCubit(GlobalRemoteDataSource())..initGlobalSteram(),
+          RootCubit(GlobalRemoteDataSource()..getGlobalStateStream()),
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           return MaterialApp(

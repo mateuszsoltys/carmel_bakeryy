@@ -28,16 +28,16 @@ class RootCubit extends Cubit<RootState> {
     final GlobalDataModel user = await _globalRemoteDataSource.getUserID();
     final GlobalDataModel admin = await _globalRemoteDataSource.getAdminID();
     if (user.user == admin.admin1 || user.user == admin.admin2) {
-      print('PRAWDA USER ${user}');
-      print('PRAWDA ADMIN_1 ${admin.admin1}');
-      print('PRAWDA ADMIN_2 ${admin.admin2}');
       emit(state.copyWith(admin: true));
     } else {
-      print('FAŁSZ USER ${user}');
-      print('FAŁSZ ADMIN_1 ${admin.admin1}');
-      print('FAŁSZ ADMIN_2 ${admin.admin2}');
       emit(state.copyWith(admin: false));
     }
+  }
+
+  Future<void> switchOpenIndicator(
+    bool indicator,
+  ) async {
+    await _globalRemoteDataSource.updateIndicator(indicator: !indicator);
   }
 
   @override

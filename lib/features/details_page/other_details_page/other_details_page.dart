@@ -1,3 +1,4 @@
+import 'package:carmel_bakeryy/data/remote_data_sources/global_remote_data_source.dart';
 import 'package:carmel_bakeryy/data/remote_data_sources/other_remote_data_source.dart';
 import 'package:carmel_bakeryy/features/details_page/other_details_page/cubit/other_details_cubit.dart';
 import 'package:carmel_bakeryy/models/data/OfferDetailsDataModel.dart';
@@ -6,6 +7,8 @@ import 'package:carmel_bakeryy/models/widgets/AnimatedArrowWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../app/cubit/root_cubit.dart';
 
 class OtherDetailsPage extends StatelessWidget {
   const OtherDetailsPage({required this.id, Key? key}) : super(key: key);
@@ -18,30 +21,40 @@ class OtherDetailsPage extends StatelessWidget {
       create: (context) =>
           OtherDetailsCubit(OtherRemoteDataSource())..getDetailsWithID(id),
       child: BlocBuilder<OtherDetailsCubit, OtherDetailsState>(
-        builder: (context, state) {
-          final detail = state.detailsState;
-          if (detail == null) {
-            return const LoadingPage();
-          }
-          return Dismissible(
-            key: const Key('key'),
-            direction: DismissDirection.down,
-            onDismissed: (_) => Navigator.of(context).pop(),
-            child: Scaffold(
-                body: Column(
-              children: [
-                Header(detail: detail),
-                const SizedBox(
-                  height: 20,
-                ),
-                DetailsDescription(detail: detail),
-                const SizedBox(
-                  height: 50,
-                ),
-                SwitchValueButton(id: id, detail: detail),
-                const AnimatedArrowDown()
-              ],
-            )),
+        builder: (context, details) {
+          final detail = details.detailsState;
+          return BlocBuilder<RootCubit, RootState>(
+            builder: (context, root) {
+              bool? admin = root.admin;
+              print('Admin OthDetails: ${admin}');
+              if (admin == null || detail == null) {
+                return LoadingPage();
+              }
+              return Dismissible(
+                key: const Key('key'),
+                direction: DismissDirection.down,
+                onDismissed: (_) => Navigator.of(context).pop(),
+                child: Scaffold(
+                    body: Column(
+                  children: [
+                    Header(detail: detail),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    DetailsDescription(detail: detail),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    admin
+                        ? SwitchValueButton(id: id, detail: detail)
+                        : SizedBox(
+                            height: 1,
+                          ),
+                    const AnimatedArrowDown()
+                  ],
+                )),
+              );
+            },
           );
         },
       ),
