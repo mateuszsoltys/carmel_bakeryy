@@ -1,5 +1,6 @@
 import 'package:carmel_bakeryy/app/cubit/root_cubit.dart';
 import 'package:carmel_bakeryy/models/widgets/PlaceStatusIndicator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,6 +12,8 @@ class OfferPageCakes extends StatelessWidget {
     return BlocBuilder<RootCubit, RootState>(
       builder: (context, state) {
         bool? indicator = state.open;
+        bool? admin = state.admin;
+        final user = FirebaseAuth.instance.currentUser?.uid;
         return Scaffold(
           appBar: AppBar(
             leading: indicator == null
@@ -32,6 +35,12 @@ class OfferPageCakes extends StatelessWidget {
           body: ListView(
             children: [
               Text('dane z Firebase'),
+              admin == null
+                  ? Text('Admin null')
+                  : admin
+                      ? Text('ADMIN JEST!')
+                      : Text("BRAK ADMINA"),
+              Text('${user}')
             ],
           ),
         );

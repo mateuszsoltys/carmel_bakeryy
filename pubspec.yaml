@@ -41,6 +41,7 @@ dependencies:
   google_fonts: ^3.0.1
   bottom_navy_bar: ^6.0.0
   flutterfire_ui: ^0.4.3+7
+  firebase_auth: ^3.8.0
   
 
 dev_dependencies:
