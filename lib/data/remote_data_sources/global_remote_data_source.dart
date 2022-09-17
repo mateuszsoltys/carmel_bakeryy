@@ -20,6 +20,20 @@ class GlobalRemoteDataSource {
     return model.copyWith(user: userID);
   }
 
+  Future<void> createUserDocIfDontExist(String id) async {
+    const bool userAdmin = false;
+    const int userPoints = 0;
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(id)
+        .get()
+        .then((docSnaoshot) => {
+              if (!docSnaoshot.exists)
+                docSnaoshot.reference
+                    .set({'admin': userAdmin, 'points': userPoints})
+            });
+  }
+
   Future<GlobalDataModel> getAdminID() async {
     final admin = await FirebaseFirestore.instance
         .collection('global')

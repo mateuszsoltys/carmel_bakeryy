@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:carmel_bakeryy/data/remote_data_sources/global_remote_data_source.dart';
 import 'package:carmel_bakeryy/models/data/GlobalDataModel.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
 part 'root_state.dart';
@@ -32,6 +30,11 @@ class RootCubit extends Cubit<RootState> {
     } else {
       emit(state.copyWith(admin: false));
     }
+  }
+
+  Future<void> checkOrCreateUserDoc() async {
+    final GlobalDataModel user = await _globalRemoteDataSource.getUserID();
+    return _globalRemoteDataSource.createUserDocIfDontExist(user.user!);
   }
 
   Future<void> switchOpenIndicator(
