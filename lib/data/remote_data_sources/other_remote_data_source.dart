@@ -5,7 +5,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class OtherRemoteDataSource {
   Stream<List<OfferDataModel>> getOtherOfferStream() {
     return FirebaseFirestore.instance
-        .collection('others')
+        .collection('offer')
+        .doc('menu')
+        .collection('other')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map((doc) {
@@ -20,8 +22,12 @@ class OtherRemoteDataSource {
   }
 
   Future<OfferDetailsDataModel> getDetails({required String id}) async {
-    final details =
-        await FirebaseFirestore.instance.collection('others').doc(id).get();
+    final details = await FirebaseFirestore.instance
+        .collection('offer')
+        .doc('menu')
+        .collection('other')
+        .doc(id)
+        .get();
     return OfferDetailsDataModel(
         Av_URL: details['Av_URL'],
         Availability: details['Availability'],
@@ -34,7 +40,9 @@ class OtherRemoteDataSource {
   Future<void> updateAvailability(
       {required String id, required bool avability}) async {
     await FirebaseFirestore.instance
-        .collection('others')
+        .collection('offer')
+        .doc('menu')
+        .collection('other')
         .doc(id)
         .update({'Availability': avability});
   }
