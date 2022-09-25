@@ -11,8 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          RootCubit(GlobalRemoteDataSource()..getGlobalStateStream()),
+      create: (context) => RootCubit(GlobalRemoteDataSource()),
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           return MaterialApp(

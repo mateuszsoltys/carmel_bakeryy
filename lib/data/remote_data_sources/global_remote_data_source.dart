@@ -3,8 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class GlobalRemoteDataSource {
-  final model =
-      GlobalDataModel(open: null, admin1: null, admin2: null, user: null);
+  final model = GlobalDataModel(open: null, admin: null, user: null);
+
   Stream<GlobalDataModel> getGlobalStateStream() {
     return FirebaseFirestore.instance
         .collection('global')
@@ -21,25 +21,24 @@ class GlobalRemoteDataSource {
   }
 
   Future<void> createUserDocIfDontExist(String id) async {
+    final firestore = FirebaseFirestore.instance;
     const bool userAdmin = false;
     const int userPoints = 0;
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(id)
-        .get()
-        .then((docSnaoshot) => {
-              if (!docSnaoshot.exists)
-                docSnaoshot.reference
-                    .set({'admin': userAdmin, 'points': userPoints})
-            });
+
+    final userDoc = await firestore.collection('users').doc(id).get();
+
+    if (!userDoc.exists) {
+      await firestore
+          .collection('users')
+          .doc(id)
+          .set({'admin': userAdmin, 'points': userPoints});
+    }
   }
 
-  Future<GlobalDataModel> getAdminID() async {
-    final admin = await FirebaseFirestore.instance
-        .collection('global')
-        .doc('states')
-        .get();
-    return model.copyWith(admin1: admin['admin1'], admin2: admin['admin2']);
+  Future<GlobalDataModel> getAdminInfo(String id) async {
+    final admin =
+        await FirebaseFirestore.instance.collection('users').doc(id).get();
+    return model.copyWith(admin: admin['admin']);
   }
 
   Future<void> updateIndicator({required bool indicator}) async {

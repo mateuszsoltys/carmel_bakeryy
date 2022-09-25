@@ -24,17 +24,15 @@ class RootCubit extends Cubit<RootState> {
 
   Future<void> initGlobalAdmin() async {
     final GlobalDataModel user = await _globalRemoteDataSource.getUserID();
-    final GlobalDataModel admin = await _globalRemoteDataSource.getAdminID();
-    if (user.user == admin.admin1 || user.user == admin.admin2) {
-      emit(state.copyWith(admin: true));
-    } else {
-      emit(state.copyWith(admin: false));
-    }
+    final GlobalDataModel admin =
+        await _globalRemoteDataSource.getAdminInfo(user.user!);
+    emit(state.copyWith(admin: admin.admin));
   }
 
   Future<void> checkOrCreateUserDoc() async {
     final GlobalDataModel user = await _globalRemoteDataSource.getUserID();
-    return _globalRemoteDataSource.createUserDocIfDontExist(user.user!);
+    await _globalRemoteDataSource.createUserDocIfDontExist(user.user!);
+    await initGlobalAdmin();
   }
 
   Future<void> switchOpenIndicator(
@@ -43,9 +41,9 @@ class RootCubit extends Cubit<RootState> {
     await _globalRemoteDataSource.updateIndicator(indicator: !indicator);
   }
 
-  @override
-  Future<void> close() {
-    _streamSubscription?.cancel();
-    return super.close();
-  }
+  // @override
+  // Future<void> close() {
+  //   _streamSubscription?.cancel();
+  //   return super.close();
+  // }
 }

@@ -4,6 +4,7 @@ import 'package:carmel_bakeryy/features/collect_page/collect_page.dart';
 import 'package:carmel_bakeryy/features/home_page/cubit/home_page_cubit.dart';
 import 'package:carmel_bakeryy/features/offer_page/page_main/OfferPage.dart';
 import 'package:carmel_bakeryy/features/profile_page/profile_page.dart';
+import 'package:carmel_bakeryy/models/pages/loading_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,10 @@ class HomePage extends StatelessWidget {
           return BlocBuilder<RootCubit, RootState>(
             builder: (context, root) {
               context.read<RootCubit>().checkOrCreateUserDoc();
+              context.read<RootCubit>().initGlobalSteram();
+              if (root.admin == null) {
+                const LoadingPage();
+              }
               return Scaffold(
                 body: screens[currentIndex],
                 bottomNavigationBar: BottomNavyBar(

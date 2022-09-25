@@ -1,4 +1,3 @@
-import 'package:carmel_bakeryy/data/remote_data_sources/global_remote_data_source.dart';
 import 'package:carmel_bakeryy/data/remote_data_sources/other_remote_data_source.dart';
 import 'package:carmel_bakeryy/features/details_page/other_details_page/cubit/other_details_cubit.dart';
 import 'package:carmel_bakeryy/models/data/OfferDetailsDataModel.dart';
@@ -26,12 +25,14 @@ class OtherDetailsPage extends StatelessWidget {
           return BlocBuilder<RootCubit, RootState>(
             builder: (context, root) {
               bool? admin = root.admin;
-              print('Admin OthDetails: ${admin}');
+
               if (admin == null || detail == null) {
-                return LoadingPage();
+                return const LoadingPage();
               }
               return Dismissible(
-                key: const Key('key'),
+                // key: UniqueKey(),
+                // key: Key(UniqueKey().toString()),
+                key: const Key('1'),
                 direction: DismissDirection.down,
                 onDismissed: (_) => Navigator.of(context).pop(),
                 child: Scaffold(
@@ -47,7 +48,7 @@ class OtherDetailsPage extends StatelessWidget {
                     ),
                     admin
                         ? SwitchValueButton(id: id, detail: detail)
-                        : SizedBox(
+                        : const SizedBox(
                             height: 1,
                           ),
                     const AnimatedArrowDown()
@@ -85,7 +86,7 @@ class SwitchValueButton extends StatelessWidget {
             : 'Zmień na dostępny'),
         style: ElevatedButton.styleFrom(
             primary: detail!.Availability
-                ? Color.fromARGB(255, 216, 0, 0)
+                ? const Color.fromARGB(255, 216, 0, 0)
                 : const Color.fromARGB(255, 76, 216, 33),
             onPrimary: Colors.deepPurple));
   }
@@ -157,7 +158,7 @@ class Header extends StatelessWidget {
         children: [
           Positioned.fill(
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(50),
                   bottomRight: Radius.circular(50)),
               child: Image(
@@ -167,7 +168,7 @@ class Header extends StatelessWidget {
             ),
           ),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color.fromARGB(99, 110, 25, 167),
                 borderRadius: BorderRadius.all(Radius.circular(5))),
             margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

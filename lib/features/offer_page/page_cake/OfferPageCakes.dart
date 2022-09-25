@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:carmel_bakeryy/app/cubit/root_cubit.dart';
+import 'package:carmel_bakeryy/models/pages/loading_page.dart';
 import 'package:carmel_bakeryy/models/widgets/PlaceStatusIndicator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,6 @@ class OfferPageCakes extends StatelessWidget {
       builder: (context, root) {
         bool? indicator = root.open;
         bool? admin = root.admin!;
-        print('Admin offer: ${admin}');
-        print('Offer indicator: ${indicator}');
         return Scaffold(
           appBar: AppBar(
             leading: indicator == null
